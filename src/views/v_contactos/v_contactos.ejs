@@ -1,0 +1,83 @@
+
+  <% include ../partials/_header %>
+ 
+
+<div class="container">
+        <div class="row">
+            <!--FORM-->
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-body">
+                  <form action="registro" method="GET">  
+                    <button class="btn btn-primary " type="submit">
+                         Crear contacto 
+                    </button>
+                    <%if (signinMessage) {%>
+                      <p><%= signinMessage %></p>
+                    <% } %>
+                    <%if (signupMessage) {%>
+                      <p><%= signupMessage %></p>
+                    <% } %>
+                  
+                  </form>
+                </div>
+              </div>
+            </div>
+                     <!-- LIST -->
+          <div class="col-md-9">
+            <table class="table table-bordered table-hover table table-sm text-center">
+            <thead class="thead-dark">
+                 <tr>
+                    <th>N°</th>
+                    <th>Name</th>
+                    <th>Last Name</th>
+                    <th>Mail</th>
+                    <th>Tel 1</th>
+                    <th>DNI</th>
+                    <th>Options</th>
+          <!-- <th>Status</th> -->
+                </tr>
+            </thead>
+      <tbody>
+        <% for(var i=0; i < contactos.length; i++) { %>
+        <tr>
+          <td><%= i + 1%></td>
+          <td><strong><%= contactos[i].name %></strong></td>
+          <td><%= contactos[i].last_name%></td>
+          <td><%= contactos[i].email%></td>
+          <td><%= contactos[i].tel1 %></td> 
+          <td><%= contactos[i].doc %></td>  
+          
+          <td>
+            <a href="/agregarRevista/<%= contactos[i]._id %>" class="btn btn-outline-success btn-sm">
+              Agregar 
+            </a>
+            <a href="/verRevistas/<%= contactos[i]._id %>" class="btn btn-primary btn-sm">
+              Ver 
+            </a>
+            <a href="/editar/<%= contactos[i]._id %>" class="btn btn-info btn-sm">
+              Editar 
+            </a>
+          </a>
+          <a href="/eliminar/<%= contactos[i]._id %>" class="btn btn-danger btn-sm" onclick="return confirmar()" >
+            Eliminar 
+          </a>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<script>
+    function confirmar()
+    {
+        if(confirm("Estas seguro que quieres eliminar este contacto ?"))
+        {
+            return true;
+        }
+        return false;
+    }
+</script>

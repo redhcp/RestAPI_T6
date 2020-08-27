@@ -1,0 +1,43 @@
+<% include ../partials/_header %>
+
+
+<div class="container">
+    <h1>Revistas</h1>
+      <div class="row">
+     
+   <!-- LIST -->
+   
+   <div class="col-md-9">
+    <table class="table table-bordered table-hover table table-sm text-center">
+      <thead class="thead-dark">
+        <tr>
+          <th>N°</th>
+          <th>Nombre</th>
+          <th>Zona</th>
+          <th>Descripcion</th>
+          <th>id objeto</th>
+          <th>Options</th>
+          <!-- <th>Status</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i=0; i < revistas.length; i++) { %>
+        <tr>
+          <td><%= i + 1%></td>
+          <td><strong><%= revistas[i].name %></strong></td>
+          <td><strong><%= revistas[i].zone %></strong></td>
+          <td><%= revistas[i].description %></td>
+          <td><%= revistas[i]._id %></td>
+          <td>
+            <a href="/verEdiciones/<%= revistas[i]._id %>&<%=contactos._id %>" class="btn btn-outline-success" method= "post">
+              Ver ediciones  </a>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  
+  </div>
+  

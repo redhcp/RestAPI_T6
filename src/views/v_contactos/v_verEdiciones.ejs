@@ -1,0 +1,43 @@
+<% include ../partials/_header %>
+
+
+<div class="container">
+    <h1>ediciones</h1>
+      <div class="row">
+     
+   <!-- LIST -->
+   
+   <div class="col-md-9">
+    <table class="table table-bordered table-hover table table-sm text-center">
+      <thead class="thead-dark">
+        <tr>
+          <th>N°</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Descripcion</th>
+          <th>id objeto</th>
+          <th>Options</th>
+          <!-- <th>Status</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i=0; i < ediciones.length; i++) { %>
+        <tr>
+          <td><%= i + 1%></td>
+          <td><strong><%= ediciones[i].name %></strong></td>
+          <td><strong><%= ediciones[i].precio %></strong></td>
+          <td><%= ediciones[i].description %></td>
+          <td><%= ediciones[i]._id %></td>
+          <td>
+            <a href="/comprarEdicion/<%= ediciones[i]._id %>&<%= contacto._id %>&<%= revista._id %>" class="btn btn-outline-success" method= "POST">
+              COMPRAR  </a>
+          </td>
+        </tr> 
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  
+  </div>
+  

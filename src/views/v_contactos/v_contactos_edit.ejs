@@ -1,0 +1,34 @@
+<% include ../partials/_header %>
+
+<div class="container">
+  <div class="row">
+ 
+    <!--FORM-->
+    <div class="col-md-5 offset-md-3">
+        <h2>Editar contacto</h2>
+      <div class="card">
+        <div class="card-body">
+          <form action="../editar/<%= contactos._id %>" method="POST">
+            <div class="form-group">
+              <input class="form-control" type="text" name="name"  value="<%= contactos.name %>">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="last_name"  value="<%= contactos.last_name %>">
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="number" name="doc"  value="<%= contactos.doc %>">
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="email" name="email"  value="<%= contactos.email  %>">
+              </div>
+            <button class="btn btn-primary" type="submit">
+              Actualizar 
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include ../partials/_footer%>

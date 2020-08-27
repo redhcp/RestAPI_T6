@@ -1,0 +1,79 @@
+<% include ../partials/_header %>
+
+<div class="container">
+   <h6>manager revistas</h5>
+  <div class="row">
+    <!--FORM-->
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+
+          <form action="addRevista" method="post">
+            <div class="form-group">
+              <input class="form-control" type="text" name="name" placeholder="Name" required=true>
+            </div>            
+            <div class="form-group">
+              <input class="form-control" type="text" name="zone" placeholder="Zone" required=true>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="description" cols="80" placeholder="Description"></textarea>
+            </div>
+            <button class="btn btn-primary " type="submit">
+              Add
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIST -->
+    <div class="col-md-9">
+      <table class="table table-bordered table-hover table table-sm text-center table table-responsive">
+        <thead class="thead-dark">
+          <tr>
+            <th>N°</th>
+            <th>Nombre</th>           
+            <th>Zona</th>
+            <th>Descripcion</th>
+            <th>Code ID</th>
+            <th>Options</th>
+            <!-- <th>Status</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i < revistas.length; i++) { %>
+          <tr>
+            <td><%= i + 1%></td>
+            <td><strong><%= revistas[i].name %></strong></td>            
+            <td><strong><%= revistas[i].zone %></strong></td>
+            <td><%= revistas[i].description %></td>
+            <td><%= revistas[i]._id %></td>
+            <td>
+              <a href="crearEdicion/<%= revistas[i]._id %> %>" class="btn btn-outline-success btn-sm">
+                Crear edicion</a>
+              <a href="/delete2/<%= revistas[i]._id %>" class="btn btn-danger btn-sm" onclick="return confirmar()">
+                Borrar
+              </a>
+              <a href="/revista_edit/<%= revistas[i]._id %>" class="btn btn-info btn-sm">
+                Editar 
+              </a>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+<script>
+  function confirmar()
+  {
+      if(confirm("Estas seguro que quieres eliminar este contacto ?"))
+      {
+          return true;
+      }
+      return false;
+  }
+</script>

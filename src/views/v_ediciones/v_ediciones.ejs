@@ -1,0 +1,78 @@
+<% include ../partials/_header %>
+
+<div class="container">
+   <h6><%= revista.edicion[0]%></h5>
+  <div class="row">
+    <!--FORM-->
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+
+          <form action="../crearEdicion/<%= revista._id%>" method="post">
+            <div class="form-group">
+              <input class="form-control" type="text" name="name" placeholder="Titulo" required=true>
+            </div>            
+            <div class="form-group">
+              <input class="form-control" type="number" name="precio" placeholder="Precio" required=true>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="description" cols="80" placeholder="Description"></textarea>
+            </div>
+            <button class="btn btn-primary " type="submit">
+              Add
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIST -->
+    <div class="col-md-9">
+      <table class="table table-bordered table-hover table table-sm text-center table table-responsive">
+        <thead class="thead-dark">
+          <tr>
+            <th>N°</th>
+            <th>Titulo</th>           
+            <th>Precio</th>
+            <th>Descripcion</th>
+            <th>Code ID</th>
+            <th>Options</th>
+            <!-- <th>Status</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i < ediciones.length; i++) { %>
+          <tr>
+            <td><%= i + 1%></td>
+            <td><strong><%= ediciones[i].name %></strong></td>            
+            <td><strong><%= ediciones[i].precio %></strong></td>
+            <td><%= ediciones[i].description %></td>
+            <td><%= ediciones[i]._id %></td>
+            <td>
+            
+              <a href="/eliminarEdicion/<%= ediciones[i]._id %>" class="btn btn-danger" onclick="return confirmar()">
+                Borrar
+              </a>
+              <a href="/revista_edit/<%= ediciones[i]._id %>" class="btn btn-info">
+                Editar 
+              </a>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+<script>
+  function confirmar()
+  {
+      if(confirm("Estas seguro que quieres eliminar este contacto ?"))
+      {
+          return true;
+      }
+      return false;
+  }
+</script>
